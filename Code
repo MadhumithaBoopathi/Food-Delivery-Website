@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Delivery Website</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      .header {
+        background-color: #060606;
+        padding: 20px;
+        color: white;
+        text-align: center;
+      }
+
+      /* Login Section */
+      .login-container,
+      .order-container,
+      .payment-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .login-box,
+      .order-box,
+      .payment-box {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #0c0e0c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0a0b0b;
+      }
+
+      /* Restaurant Explore Section */
+      .restaurant-container {
+        display: flex;
+        justify-content: space-around;
+        margin: 20px;
+      }
+
+      .restaurant {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 200px;
+      }
+
+      .restaurant img {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .explore-bg {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("C:\Users\mirut\Downloads\restaarant.jpg");
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        padding-top: 50px;
+      }
+
+      /* Menu Section */
+      .menu-container {
+        display: flex;
+        justify-content: space-around;
+        margin: 20px;
+      }
+
+      .menu-item {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 200px;
+      }
+
+      .menu-item img {
+        width: 100%;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+      <div class="login-box">
+        <h1>Login</h1>
+
+        <form>
+          <input type="text" placeholder="Username" required />
+          <input type="password" placeholder="Password" required />
+          <button type="button" onclick="showExplorePage()">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Explore Restaurants Page -->
+    <div class="explore-bg" id="explorePage" style="display: none">
+      <div class="header">
+        <h1>Explore Restaurants</h1>
+      </div>
+      <div class="restaurant-container">
+        <div class="restaurant">
+          <img
+            src="C:\Users\mirut\Downloads\beacon_restaurants-2.jpg"
+            alt="Restaurant 1"
+          />
+          <h2>Your's kitchen</h2>
+          <button onclick="showMenuPage()">View Menu</button>
+        </div>
+        <div class="restaurant">
+          <img
+            src="C:\Users\mirut\Downloads\Barbieri_-_ViaSophia25668.jpg"
+            alt="Restaurant 2"
+          />
+          <h2>The mom's kitchen</h2>
+          <button onclick="showMenuPage()">View Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Page -->
+    <div class="menu-container" id="menuPage" style="display: none">
+      <div class="header">
+        <h1>Menu</h1>
+      </div>
+      <div class="menu-container">
+        <div class="menu-item">
+          <img src="C:\Users\mirut\Downloads\Burger.jpg" alt="Burger" />
+          <h2>Burger</h2>
+          <p>rs 120.00</p>
+          <button onclick="showOrderPage()">Order Now</button>
+        </div>
+        <div class="menu-item">
+          <img src="C:\Users\mirut\Downloads\Pizza-3007395.jpg" alt="Pizza" />
+          <h2>Pizza</h2>
+          <p>rs 240.00</p>
+          <button onclick="showOrderPage()">Order Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Page -->
+    <div class="order-container" id="orderPage" style="display: none">
+      <div class="order-box">
+        <h1>Your Order</h1>
+        <div class="order-details">
+          <p>Burger x 1</p>
+          <p>Pizza x 2</p>
+          <p>Total: rs 360.00</p>
+        </div>
+        <button onclick="showPaymentPage()">Proceed to Payment</button>
+      </div>
+    </div>
+
+    <!-- Payment Summary Page -->
+    <div class="payment-container" id="paymentPage" style="display: none">
+      <div class="payment-box">
+        <h1>Payment Summary</h1>
+        <p>Thank you for your order!</p>
+        <p>Total Amount: rs 360.00</p>
+        <button onclick="showExplorePage()">Order Again</button>
+      </div>
+    </div>
+
+    <script>
+      function showExplorePage() {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("explorePage").style.display = "block";
+        document.getElementById("menuPage").style.display = "none";
+        document.getElementById("orderPage").style.display = "none";
+        document.getElementById("paymentPage").style.display = "none";
+      }
+
+      function showMenuPage() {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("explorePage").style.display = "none";
+        document.getElementById("menuPage").style.display = "block";
+        document.getElementById("orderPage").style.display = "none";
+        document.getElementById("paymentPage").style.display = "none";
+      }
+
+      function showOrderPage() {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("explorePage").style.display = "none";
+        document.getElementById("menuPage").style.display = "none";
+        document.getElementById("orderPage").style.display = "block";
+        document.getElementById("paymentPage").style.display = "none";
+      }
+
+      function showPaymentPage() {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("explorePage").style.display = "none";
+        document.getElementById("menuPage").style.display = "none";
+        document.getElementById("orderPage").style.display = "none";
+        document.getElementById("paymentPage").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
